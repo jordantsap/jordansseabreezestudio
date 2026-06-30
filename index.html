@@ -3,59 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Under Construction</title>
+  <title>Book Now</title>
 
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:Arial, sans-serif;
+      background:#0b1220;
+      color:#fff;
+      text-align:center;
     }
 
-    .card {
-      padding: 20px;
-      max-width: 500px;
+    .card{
+      width:90%;
+      max-width:420px;
     }
 
-    img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    img{
+      width:100%;
+      border-radius:12px;
+      margin-bottom:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .buttons {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    h1{
+      margin:10px 0 20px;
+      font-size:32px;
+      letter-spacing:1px;
     }
 
-    a.button {
-      display: block;
-      padding: 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.2s;
+    .top-buttons{
+      display:flex;
+      gap:10px;
+      margin-bottom:15px;
     }
 
-    .fb { background: #1877f2; }
-    .fb:hover { background: #0f5bd3; }
+    .btn{
+      flex:1;
+      padding:12px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      color:white;
+      display:block;
+      transition:0.2s;
+    }
 
-    .wa { background: #25D366; }
-    .wa:hover { background: #1da851; }
+    .wa{ background:#25D366; }
+    .wa:hover{ background:#1da851; }
 
-    .vb { background: #7360f2; }
-    .vb:hover { background: #5a49c9; }
+    .vb{ background:#7360f2; }
+    .vb:hover{ background:#5a49c9; }
+
+    .fb{
+      background:#1877f2;
+    }
+
+    .fb:hover{
+      background:#0f5bd3;
+    }
+
+    .fb-title{
+      margin-top:15px;
+      font-size:16px;
+      opacity:0.9;
+    }
   </style>
 </head>
 
@@ -63,23 +79,20 @@
 
   <div class="card">
 
-    <img src="/images/under-construction.jpg" alt="Jordan's Sea Breeze Studio at Nea Karvali Kavalas is Under Construction">
+    <img src="images/under-construction.jpg" alt="Jordan's Sea Breeze Studio to Nea Karvali Kavalas is Under Construction">
 
-    <div class="buttons">
+    <h1>Book now</h1>
 
-      <a class="button fb" href="https://www.facebook.com/jordansseabreezestudioneakarvalikavalas" target="_blank">
-        Facebook Page
-      </a>
-
-      <a class="button wa" href="https://wa.me/306932728683" target="_blank">
-        WhatsApp
-      </a>
-
-      <a class="button vb" href="viber://chat?number=%2B306932728683">
-        Viber
-      </a>
-
+    <div class="top-buttons">
+      <a class="btn wa" href="https://wa.me/306932728683" target="_blank">WhatsApp</a>
+      <a class="btn vb" href="viber://chat?number=%2B306932728683">Viber</a>
     </div>
+
+    <div class="fb-title">Find us and stay connected</div>
+
+    <a class="btn fb" href="https://facebook.com" target="_blank">
+      Facebook Page
+    </a>
 
   </div>
 
