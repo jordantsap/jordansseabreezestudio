@@ -1,1 +1,179 @@
-<!doctype html><html><head><meta charset='utf-8'><link rel='stylesheet' href='assets/css/style.css'></head><body><header><h1>Jordan's Sea Breeze Studio</h1></header><main><section><h2>About</h2></section><section><h2>Rooms</h2></section><section><h2>Amenities</h2></section><section><h2>Gallery</h2></section><section><h2>Location</h2></section><section><h2>Contact</h2></section></main><script src='assets/js/script.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan's Sea Breeze Studio | Πολυτελής Διαμονή</title>
+    <meta name="description" content="Απολαύστε τη διαμονή σας στο Jordan's Sea Breeze Studio. Χαλάρωση, άνεση και θέα στη θάλασσα. Κάντε την κράτησή σας σήμερα.">
+    
+    <link rel="icon" type="image/png" href="favicon/favicon.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">Jordan's <span>Sea Breeze</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero">Αρχική</a>
+                <a href="#rooms">Τα Δωμάτια</a>
+                <a href="#amenities">Παροχές</a>
+                <a href="#gallery">Φωτογραφίες</a>
+                <a href="#location">Τοποθεσία</a>
+                <a href="#contact" class="btn btn-primary nav-btn">Κράτηση Τώρα</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section id="hero" class="hero" style="background: linear-gradient(rgba(2, 48, 71, 0.5), rgba(2, 48, 71, 0.3)), url('images/hero/hero-bg.jpg') no-repeat center center/cover;">
+        <div class="hero-content container">
+            <h1>Η Απόλυτη Απόδραση Δίπλα στο Κύμα</h1>
+            <p>Ζήστε την εμπειρία της άνεσης και της ηρεμίας στο Jordan's Sea Breeze Studio.</p>
+            <a href="#rooms" class="btn btn-primary btn-lg">Ανακαλύψτε τα Δωμάτια <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section class="booking-bar">
+        <div class="container">
+            <form class="booking-form" onsubmit="event.preventDefault(); alert('Ανακατεύθυνση στο σύστημα κρατήσεων...');">
+                <div class="form-group">
+                    <label><i class="far fa-calendar-alt"></i> Άφιξη</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="far fa-calendar-alt"></i> Αναχώρηση</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-users"></i> Επισκέπτες</label>
+                    <select>
+                        <option>1 Επισκέπτης</option>
+                        <option selected>2 Επισκέπτες</option>
+                        <option>3 Επισκέπτες</option>
+                        <option>4 Επισκέπτες</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-accent">Έλεγχος Διαθεσιμότητας</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="rooms" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Τα Δωμάτιά μας</h2>
+                <p>Σχεδιασμένα με υψηλή αισθητική για την απόλυτη χαλάρωσή σας</p>
+            </div>
+            <div class="grid grid-rooms">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/rooms/room1.jpg" alt="Deluxe Studio">
+                    </div>
+                    <div class="card-body">
+                        <h3>Deluxe Sea View Studio</h3>
+                        <p>Ευρύχωρο studio με πανοραμική θέα στη θάλασσα, ιδανικό για ζευγάρια.</p>
+                        <div class="card-features">
+                            <span><i class="fas fa-expand"></i> 35 τ.μ.</span>
+                            <span><i class="fas fa-bed"></i> 1 Διπλό</span>
+                            <span><i class="fas fa-wifi"></i> Free Wi-Fi</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price">Από <strong>€80</strong> / νύχτα</span>
+                            <a href="#contact" class="btn btn-outline">Κράτηση</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="amenities" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ανέσεις & Παροχές</h2>
+                <p>Όλα όσα χρειάζεστε για μια ξέγνοιαστη διαμονή</p>
+            </div>
+            <div class="grid grid-amenities">
+                <div class="amenity-item">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>Κλιματισμός (A/C)</h3>
+                </div>
+                <div class="amenity-item">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Γρήγορο Ίντερνετ</h3>
+                </div>
+                <div class="amenity-item">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Καφετιέρα & Espresso</h3>
+                </div>
+                <div class="amenity-item">
+                    <i class="fas fa-square-parking"></i>
+                    <h3>Δωρεάν Parking</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Φωτογραφίες</h2>
+                <p>Μια ματιά στους χώρους του Jordan's Sea Breeze Studio</p>
+            </div>
+            <div class="gallery-grid">
+                <img src="images/gallery/img1.jpg" alt="Studio Interior">
+                <img src="images/gallery/img2.jpg" alt="Balcony View">
+                <img src="images/gallery/img3.jpg" alt="Bathroom">
+                <img src="images/gallery/img4.jpg" alt="Surrounding Area">
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Τοποθεσία & Επικοινωνία</h2>
+                <p>Βρείτε μας εύκολα και επικοινωνήστε απευθείας μαζί μας</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Πού θα μας βρείτε</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Νέα Καρβάλη, Καβάλα, Ελλάδα</p>
+                    <p><i class="fas fa-phone"></i> +30 690 000 0000</p>
+                    <p><i class="fas fa-envelope"></i> info@jordansseabreeze.com</p>
+                    <div class="map-container">
+                        <img src="images/location/map-placeholder.jpg" alt="Map Location" style="width:100%; border-radius: 8px;">
+                    </div>
+                </div>
+                <div id="contact" class="contact-form-container">
+                    <h3>Στείλτε μας Μήνυμα / Εκδήλωση Ενδιαφέροντος</h3>
+                    <form class="main-contact-form">
+                        <input type="text" placeholder="Ονοματεπώνυμο" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Το μήνυμά σας ή οι ημερομηνίες που σας ενδιαφέρουν..." rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary btn-block">Αποστολή Μηνύματος</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Jordan's Sea Breeze Studio. All rights reserved.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
