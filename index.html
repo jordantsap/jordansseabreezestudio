@@ -31,7 +31,7 @@
         </div>
     </header>
 
-    <section id="hero" class="hero" style="background: linear-gradient(rgba(2, 48, 71, 0.5), rgba(2, 48, 71, 0.3)), url('images/hero/hero-01.png') no-repeat center center/cover;">
+    <section id="hero" class="hero" style="background: linear-gradient(rgba(2, 48, 71, 0.5), rgba(2, 48, 71, 0.3)), url('images/hero/hero-01.jpg') no-repeat center center/cover;">
         <div class="hero-content container">
             <h1>Η Απόλυτη Απόδραση Δίπλα στο Κύμα</h1>
             <p>Ζήστε την εμπειρία της άνεσης και της ηρεμίας στο Jordan's Sea Breeze Studio.</p>
@@ -73,19 +73,25 @@
             <div class="grid grid-rooms">
                 <div class="card">
                     <div class="card-img">
-                        <img src="images/rooms/room-01.png" alt="Deluxe Studio">
+                        <img src="images/rooms/balcony/balcony-01.png" class="lightbox-trigger" alt="Ιδιωτικό Μπαλκόνι">
                     </div>
                     <div class="card-body">
-                        <h3>Deluxe Sea View Studio</h3>
-                        <p>Ευρύχωρο studio με πανοραμική θέα στη θάλασσα, ιδανικό για ζευγάρια.</p>
-                        <div class="card-features">
-                            <span><i class="fas fa-expand"></i> 35 τ.μ.</span>
-                            <span><i class="fas fa-bed"></i> 1 Διπλό</span>
-                            <span><i class="fas fa-wifi"></i> Free Wi-Fi</span>
-                        </div>
+                        <h3>Ιδιωτικό Μπαλκόνι</h3>
+                        <p>Απολαύστε τον πρωινό καφέ σας με τη δροσιά και τη θέα του Sea Breeze.</p>
                         <div class="card-footer">
-                            <span class="price">Από <strong>€80</strong> / νύχτα</span>
-                            <a href="#contact" class="btn btn-outline">Κράτηση</a>
+                            <a href="#contact" class="btn btn-outline">Μάθετε Περισσότερα</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/rooms/bedroom/bedroom-01.png" class="lightbox-trigger" alt="Master Bedroom">
+                    </div>
+                    <div class="card-body">
+                        <h3>Master Bedroom</h3>
+                        <p>Αναπαυτικά στρώματα και premium λευκά είδη για την απόλυτη εμπειρία ύπνου.</p>
+                        <div class="card-footer">
+                            <a href="#contact" class="btn btn-outline">Μάθετε Περισσότερα</a>
                         </div>
                     </div>
                 </div>
@@ -127,10 +133,10 @@
                 <p>Μια ματιά στους χώρους του Jordan's Sea Breeze Studio</p>
             </div>
             <div class="gallery-grid">
-                <img src="images/gallery/img1.jpg" alt="Studio Interior">
-                <img src="images/gallery/img2.jpg" alt="Balcony View">
-                <img src="images/gallery/img3.jpg" alt="Bathroom">
-                <img src="images/gallery/img4.jpg" alt="Surrounding Area">
+                <img src="images/gallery/gallery-01.jpg" class="lightbox-trigger" alt="Studio Interior">
+                <img src="images/location/outside.jpg" class="lightbox-trigger" alt="Εξωτερικός Χώρος">
+                <img src="images/nearby/beach.jpg" class="lightbox-trigger" alt="Κοντινή Παραλία">
+                <img src="images/under-construction.jpg" class="lightbox-trigger" alt="Sea Breeze Preview">
             </div>
         </div>
     </section>
@@ -145,10 +151,9 @@
                 <div class="contact-info">
                     <h3>Πού θα μας βρείτε</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Νέα Καρβάλη, Καβάλα, Ελλάδα</p>
-                    <p><i class="fas fa-phone"></i> +30 690 000 0000</p>
                     <p><i class="fas fa-envelope"></i> info@jordansseabreeze.com</p>
                     <div class="map-container">
-                        <img src="images/location/map-placeholder.jpg" alt="Map Location" style="width:100%; border-radius: 8px;">
+                        <img src="images/location/outside.jpg" alt="Map Location" style="width:100%; border-radius: 8px; height: 250px; object-fit: cover;">
                     </div>
                 </div>
                 <div id="contact" class="contact-form-container">
@@ -164,6 +169,11 @@
         </div>
     </section>
 
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Full Screen Preview">
+    </div>
+
     <footer>
         <div class="container footer-content">
             <p>&copy; 2026 Jordan's Sea Breeze Studio. All rights reserved.</p>
@@ -173,11 +183,6 @@
             </div>
         </div>
     </footer>
-
-    <div id="lightboxModal" class="lightbox-modal">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="Full Screen Preview">
-    </div>
 
     <script src="assets/js/script.js"></script>
 </body>
