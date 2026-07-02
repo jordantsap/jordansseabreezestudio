@@ -305,3 +305,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- ΚΩΔΙΚΑΣ ΓΙΑ ΚΟΥΜΠΙ BACK TO TOP ---
+    const backToTopBtn = document.getElementById('backToTop');
+
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            // Υπολογισμός του μισού ύψους της σελίδας
+            const halfPageHeight = document.documentElement.scrollHeight / 2;
+            
+            // Αν το scroll ξεπεράσει το μισό ύψος, εμφάνισε το κουμπί, αλλιώς κρύψτο
+            if (window.scrollY > halfPageHeight) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Λειτουργία όταν γίνει κλικ στο κουμπί
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Ομαλό scroll μέχρι πάνω
+            });
+        });
+    }
