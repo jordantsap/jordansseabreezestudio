@@ -228,11 +228,11 @@ function initLightboxEngine() {
         document.body.style.overflow = 'auto';
     }
 }
-
 // ==========================================================================
-// 4. ΕΚΚΙΝΗΣΗ DOM
+// 4. ΕΚΚΙΝΗΣΗ DOM & ΦΟΡΜΑΣ ΕΠΙΚΟΙΝΩΝΙΑΣ
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Setup Γλώσσας
     const langSelect = document.getElementById('langSelect');
     const savedLang = localStorage.getItem('preferredLang') || 'en';
     if (langSelect) {
@@ -241,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setLanguage(savedLang);
 
+    // Εκκίνηση Λειτουργιών Slideshow & Lightbox
     initDynamicSlideshows();
     initLightboxEngine();
 
@@ -255,40 +256,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- ΚΩΔΙΚΑΣ ΓΙΑ ΤΗ ΦΟΡΜΑ Web3Forms (Αποφυγή 405 και ανανέωσης) ---
     const form = document.getElementById('contactForm');
-const submitBtn = document.getElementById('submitBtn');
+    const submitBtn = document.getElementById('submitBtn');
 
-if (form) {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Σταματάει την ανανέωση της σελίδας!
-        
-        submitBtn.innerText = "Αποστολή...";
-        submitBtn.disabled = true;
+    if (form && submitBtn) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Σταματάει το default submit του browser (Αντίο 405!)
+            
+            // Αλλαγή κατάστασης κουμπιού
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = "Αποστολή...";
+            submitBtn.disabled = true;
 
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
+            // Συλλογή δεδομένων
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
 
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: json
-        })
-        .then(async (response) => {
-            if (response.status == 200) {
-                // Επιτυχία!
-                submitBtn.innerText = "Το μήνυμα στάλθηκε επιτυχώς!";
-                submitBtn.style.backgroundColor = "#2a9d8f"; // Πράσινο χρώμα επιτυχίας
-                form.reset(); // Καθαρίζει τα πεδία
-            } else {
-                submitBtn.innerText = "Σφάλμα αποστολής";
+            // Αποστολή στο API του Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json', 
+                    'Accept': 'application/json' 
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    // Επιτυχία
+                    submitBtn.innerText = "Το μήνυμα στάλθηκε επιτυχώς!";
+                    submitBtn.style.backgroundColor = "#2a9d8f"; // Πράσινο background
+                    submitBtn.style.color = "#fff";
+                    form.reset(); // Καθαρισμός πεδίων
+                } else {
+                    // Σφάλμα από το API
+                    submitBtn.innerText = "Σφάλμα: " + res.message;
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                // Σφάλμα δικτύου
+                submitBtn.innerText = "Αποτυχία σύνδεσης";
                 submitBtn.disabled = false;
-            }
-        })
-        .catch(error => {
-            submitBtn.innerText = "Δίκτυο εκτός λειτουργίας";
-            submitBtn.disabled = false;
+            });
         });
-    });
-}
+    }
 });
