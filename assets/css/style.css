@@ -292,3 +292,61 @@ footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px
         font-size: 24px !important;
     }
 }
+
+/* 1. Ενεργοποίηση Smooth Scroll για όλο το site */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Αν το μενού σου είναι σταθερό (fixed) στην κορυφή, προσθέτουμε ένα offset 
+   για να μην κρύβεται ο τίτλος του κάθε section πίσω από το μενού */
+section {
+    scroll-margin-top: 80px; /* Προσάρμοσε τα pixels ανάλογα με το ύψος του navigation σου */
+}
+
+/* 2. Στυλ για το Κουμπί Back to Top */
+.back-to-top {
+    position: fixed !important;
+    bottom: 30px !important;
+    left: 30px !important; /* Το βάζουμε αριστερά για να μην πέσει πάνω στα WhatsApp/Viber που είναι δεξιά */
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    background-color: var(--primary, #023047) !important; /* Χρησιμοποιεί το κύριο χρώμα σου ή σκούρο μπλε */
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    opacity: 0 !important; /* Κρυφό αρχικά */
+    visibility: hidden !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Εφέ όταν ο χρήστης περνάει το ποντίκι */
+.back-to-top:hover {
+    transform: scale(1.1) translateY(-3px) !important;
+    background-color: var(--secondary, #ffb703) !important; /* Αλλάζει στο πορτοκαλί/κίτρινο σου στο hover */
+    color: #023047 !important;
+}
+
+/* Εμφάνιση κουμπιού (θα ενεργοποιείται μέσω JS) */
+.back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Προσαρμογή για κινητά */
+@media (max-width: 480px) {
+    .back-to-top {
+        bottom: 20px !important;
+        left: 20px !important;
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 18px !important;
+    }
+}
