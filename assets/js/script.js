@@ -1,5 +1,6 @@
 /**
  * Jordan's Sea Breeze Studio - Core Javascript Engine
+ * Includes: Multi-language (i18n), Dynamic Slideshows, and Gallery Lightbox with Navigation
  */
 
 // ==========================================================================
@@ -36,7 +37,7 @@ const translations = {
         room_bathroom_title: "Μπάνιο", room_bathroom_desc: "Σύγχρονο μπάνιο εξοπλισμένο με πλυντήριο ρούχων και είδη πρώτης ανάγκης.",
         amenities_title: "Παροχές & Ανέσεις", am_ac: "Κλιματισμός (A/C)", am_tv: "Smart TV", am_wifi: "Δωρεάν Wi-Fi", am_washer: "Πλυντήριο Ρούχων", am_oven: "Φούρνος & Εστίες", am_fridge: "Ψυγείο", am_toaster: "Τοστιέρα", am_parking: "Δωρεάν Parking", am_fire: "Πυροσβεστήρας", am_firstaid: "Κουτί Πρώτων Βοηθειών", am_pillows: "Extra Μαξιλάρια",
         gallery_title: "Φωτογραφίες & Αξιοθέατα", gallery_subtitle: "Οι καλύτερες φωτογραφίες του καταλύματος, της παραλίας και της κοντινής Καβάλας",
-        contact_title: "Επικοινωνία", form_name: "Ονοματεπώνυμο", form_email: "Email Διεύθυνση", form_msg: "Γράψτε το μήνυμά σειράς ή τις ημερομηνίες ενδιαφέροντος...", form_btn: "Αποστολή Μηνύματος"
+        contact_title: "Επικοミュニία", form_name: "Ονοματεπώνυμο", form_email: "Email Διεύθυνση", form_msg: "Γράψτε το μήνυμά σας ή τις ημερομηνίες ενδιαφέροντος...", form_btn: "Αποστολή Μηνύματος"
     }
 };
 
@@ -54,7 +55,7 @@ function setLanguage(lang) {
 }
 
 // ==========================================================================
-// 2. ΕΞΥΠΝΟΣ ΜΗΧΑΝΙΣΜΟΣ SLIDESHOWS (Fix για Μικτές Καταλήξεις)
+// 2. ΜΗΧΑΝΙΣΜΟΣ ΑΥΤΟΜΑΤΩΝ SLIDESHOWS
 // ==========================================================================
 function initDynamicSlideshows() {
     // Background Slideshow (Hero)
@@ -65,9 +66,7 @@ function initDynamicSlideshows() {
 
         function rotateBackground() {
             let imgNum = String(currentIndex).padStart(2, '0');
-            // Επειδή το hero-01 είναι png αλλά τα 02,03,04,05 είναι jpg:
-            let ext = (currentIndex === 1) ? 'png' : 'jpg';
-            
+            let ext = (currentIndex === 1) ? 'png' : 'jpg'; // Fix για τις δικές σου hero φωτό
             section.style.backgroundImage = `linear-gradient(rgba(2, 48, 71, 0.4), rgba(2, 48, 71, 0.2)), url('${folder}-${imgNum}.${ext}')`;
             currentIndex = (currentIndex % total) + 1;
         }
@@ -76,14 +75,14 @@ function initDynamicSlideshows() {
         if (total > 1) setInterval(rotateBackground, 5000);
     });
 
-    // Κανονικά Slideshows (Δωμάτια)
+    // Content Inline Slideshows (Δωμάτια)
     document.querySelectorAll('.auto-slideshow-img').forEach(container => {
         const folder = container.getAttribute('data-folder');
         const total = parseInt(container.getAttribute('data-total')) || 1;
         const ext = container.getAttribute('data-ext') || 'png';
 
         const imgElement = document.createElement('img');
-        imgElement.classList.add('lightbox-trigger');
+        imgElement.classList.add('lightbox-trigger', 'slideshow-active-img'); // Ειδικό class για διάκριση
         imgElement.alt = "Property Space";
         container.appendChild(imgElement);
 
@@ -92,12 +91,10 @@ function initDynamicSlideshows() {
         function rotateImage() {
             let imgNum = String(currentIndex).padStart(2, '0');
             imgElement.style.opacity = 0.2;
-            
             setTimeout(() => {
                 imgElement.src = `${folder}-${imgNum}.${ext}`;
                 imgElement.style.opacity = 1;
             }, 250);
-            
             currentIndex = (currentIndex % total) + 1;
         }
 
@@ -107,9 +104,103 @@ function initDynamicSlideshows() {
 }
 
 // ==========================================================================
-// 3. EVENT LISTENERS
+// 3. ADVANCED LIGHTBOX ENGINE (Με Πλοήγηση & Υποστήριξη Slideshow)
+// ==========================================================================
+let staticImages = []; // Πίνακας για τις σταθερές εικόνες (About, Gallery)
+let currentStaticIndex = -1;
+
+function initLightboxEngine() {
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    
+    if (!modal || !modalImg) return;
+
+    // Δημιουργούμε δυναμικά τα βελάκια πλοήγησης μέσα στο Modal αν δεν υπάρχουν
+    if (!document.getElementById('lightboxPrev')) {
+        const prevBtn = document.createElement('span');
+        prevBtn.id = 'lightboxPrev';
+        prevBtn.className = 'lightbox-nav prev';
+        prevBtn.innerHTML = '&#10094;';
+        modal.appendChild(prevBtn);
+
+        const nextBtn = document.createElement('span');
+        nextBtn.id = 'lightboxNext';
+        nextBtn.className = 'lightbox-nav next';
+        nextBtn.innerHTML = '&#10095;';
+        modal.appendChild(nextBtn);
+        
+        // Event Listeners για τα βελάκια
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); changeStaticImage(-1); });
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); changeStaticImage(1); });
+    }
+
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+
+    // Ανίχνευση κλικ σε οποιαδήποτε εικόνα με class 'lightbox-trigger'
+    document.body.addEventListener('click', (e) => {
+        if (e.target.classList.contains('lightbox-trigger')) {
+            modal.style.display = "block";
+            modalImg.src = e.target.src;
+            setTimeout(() => modal.classList.add('show'), 10);
+            document.body.style.overflow = 'hidden';
+
+            // Έλεγχος: Είναι εικόνα από slideshow δωματίου ή σταθερή (About/Gallery);
+            if (e.target.classList.contains('slideshow-active-img')) {
+                // Αν είναι από slideshow, κρύβουμε τα βελάκια (δείχνει μόνο τη συγκεκριμένη στιγμή full screen)
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                // Αν είναι σταθερή εικόνα, ενεργοποιούμε την πλοήγηση της Gallery
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+                
+                // Ανανέωση της λίστας σταθερών εικόνων
+                staticImages = Array.from(document.querySelectorAll('.lightbox-trigger:not(.slideshow-active-img)'));
+                currentStaticIndex = staticImages.findIndex(img => img.src === e.target.src);
+            }
+        }
+    });
+
+    // Συνάρτηση αλλαγής εικόνας στο Lightbox
+    function changeStaticImage(direction) {
+        if (staticImages.length <= 1 || currentStaticIndex === -1) return;
+        
+        currentStaticIndex += direction;
+        if (currentStaticIndex >= staticImages.length) currentStaticIndex = 0;
+        if (currentStaticIndex < 0) currentStaticIndex = staticImages.length - 1;
+        
+        modalImg.src = staticImages[currentStaticIndex].src;
+    }
+
+    // Κλείσιμο με κλικ στο κουμπί ή έξω από την εικόνα
+    const closeBtn = document.querySelector('.lightbox-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal || e.target.classList.contains('lightbox-close')) closeModal(); });
+    
+    // Πλοήγηση με το πληκτρολόγιο (Esc, Αριστερό/Δεξί βέλος)
+    document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('show')) {
+            if (e.key === "Escape") closeModal();
+            if (prevBtn.style.display === 'block') {
+                if (e.key === "ArrowLeft") changeStaticImage(-1);
+                if (e.key === "ArrowRight") changeStaticImage(1);
+            }
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => modal.style.display = "none", 300);
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// ==========================================================================
+// 4. ΕΚΚΙΝΗΣΗ DOM
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Setup Γλώσσας
     const langSelect = document.getElementById('langSelect');
     const savedLang = localStorage.getItem('preferredLang') || 'en';
     if (langSelect) {
@@ -117,9 +208,12 @@ document.addEventListener('DOMContentLoaded', () => {
         langSelect.addEventListener('change', (e) => setLanguage(e.target.value));
     }
     setLanguage(savedLang);
-    initDynamicSlideshows();
 
-    // Mobile Menu
+    // Εκκίνηση Slideshows & Lightbox
+    initDynamicSlideshows();
+    initLightboxEngine();
+
+    // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     if (hamburger && navMenu) {
@@ -128,30 +222,5 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.querySelector('i').classList.toggle('fa-bars');
             hamburger.querySelector('i').classList.toggle('fa-times');
         });
-    }
-
-    // Lightbox
-    const modal = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImg');
-    const closeBtn = document.querySelector('.lightbox-close');
-
-    document.body.addEventListener('click', (e) => {
-        if (e.target.classList.contains('lightbox-trigger') && modal && modalImg) {
-            modal.style.display = "block";
-            modalImg.src = e.target.src;
-            setTimeout(() => modal.classList.add('show'), 10);
-            document.body.style.overflow = 'hidden';
-        }
-    });
-
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === "Escape") closeModal(); });
-
-    function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('show');
-        setTimeout(() => modal.style.display = "none", 300);
-        document.body.style.overflow = 'auto';
     }
 });
