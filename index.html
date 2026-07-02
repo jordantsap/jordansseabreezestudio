@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jordan's Sea Breeze Studio</title>
-    
     <meta name="description" content="Enjoy a premium stay next to the sea at Jordan's Sea Breeze Studio in Nea Karvali, Kavala.">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Jordan's Sea Breeze Studio | Premium Stay">
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="manifest" href="manifest.json">
-    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,11 +16,10 @@
     <header class="navbar">
         <div class="container navbar-container">
             <a href="#" class="logo">Jordan's <span>Sea Breeze</span></a>
-            
             <nav class="nav-menu" id="navMenu">
                 <a href="#hero" data-i18n="nav_home">Home</a>
                 <a href="#about" data-i18n="nav_about">About</a>
-                <a href="#rooms" data-i18n="nav_rooms">Rooms</a>
+                <a href="#rooms" data-i18n="nav_rooms">Spaces</a>
                 <a href="#amenities" data-i18n="nav_amenities">Amenities</a>
                 <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
                 <a href="#location" data-i18n="nav_location">Location</a>
@@ -40,19 +35,16 @@
                     </select>
                 </div>
             </nav>
-            
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <section id="hero" class="hero auto-slideshow-bg" data-folder="images/hero/hero" data-total="5" data-ext="jpg">
+    <section id="hero" class="hero auto-slideshow-bg" data-folder="images/hero/hero" data-total="5" data-ext="png">
         <div class="hero-content container">
             <h1 data-i18n="hero_title">The Ultimate Escape by the Sea</h1>
             <p data-i18n="hero_subtitle">Experience comfort and relaxation in Nea Karvali, Kavala.</p>
             <div class="hero-buttons">
-                <a href="#rooms" class="btn btn-primary btn-lg" data-i18n="hero_btn_explore">Explore Rooms</a>
+                <a href="#rooms" class="btn btn-primary btn-lg" data-i18n="hero_btn_explore">Explore Spaces</a>
                 <a href="https://www.airbnb.com/rooms/1685512759616250569" target="_blank" class="btn btn-accent btn-lg"><i class="fab fa-airbnb"></i> Airbnb</a>
             </div>
         </div>
@@ -76,13 +68,13 @@
                 <hr class="divider">
                 <p data-i18n="about_description">A fully equipped space designed to offer a warm, relaxing, and premium accommodation experience next to the sea.</p>
                 <div class="property-meta">
-                    <div class="meta-item"><i class="fas fa-clock"></i> <span data-i18n="meta_checkin"><strong>Check-in:</strong> Flexible (upon communication)</span></div>
+                    <div class="meta-item"><i class="fas fa-clock"></i> <span data-i18n="meta_checkin"><strong>Check-in:</strong> Flexible</span></div>
                     <div class="meta-item"><i class="fas fa-sign-out-alt"></i> <span data-i18n="meta_checkout"><strong>Check-out:</strong> Until 12:00 (Noon)</span></div>
-                    <div class="meta-item"><i class="fas fa-language"></i> <span data-i18n="meta_languages"><strong>Languages:</strong> English, Greek</span></div>
+                    <div class="meta-item"><i class="fas fa-ban"></i> <span data-i18n="meta_rules"><strong>House Rules:</strong> No smoking, No parties, No pets</span></div>
                 </div>
             </div>
             <div class="about-image">
-                <img src="images/hero/hero-01.jpg" class="lightbox-trigger img-responsive" alt="Studio Exterior">
+                <img src="images/hero/hero-01.png" class="lightbox-trigger img-responsive" alt="Studio Exterior">
             </div>
         </div>
     </section>
@@ -91,36 +83,44 @@
         <div class="container">
             <div class="section-header">
                 <h2 data-i18n="rooms_header_title">Our Spaces</h2>
-                <p data-i18n="rooms_header_subtitle">Discover every corner of the studio, designed for ultimate functionality</p>
+                <p data-i18n="rooms_header_subtitle">Discover every corner of the studio</p>
             </div>
             <div class="grid grid-3">
-                
                 <div class="card">
-                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/bedroom/bedroom" data-total="3" data-ext="png">
-                        </div>
+                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/bedroom/bedroom" data-total="3" data-ext="png"></div>
                     <div class="card-body">
                         <h3 data-i18n="room_bedroom_title">Master Bedroom</h3>
-                        <p data-i18n="room_bedroom_desc">Comfortable bed with extra pillows and premium linens for a restful sleep.</p>
+                        <p data-i18n="room_bedroom_desc">Comfortable bed with extra pillows and premium linens.</p>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/balcony/balcony" data-total="6" data-ext="png">
-                        </div>
-                    <div class="card-body">
-                        <h3 data-i18n="room_balcony_title">Private Balcony</h3>
-                        <p data-i18n="room_balcony_desc">Private outdoor area to enjoy your morning coffee with the sea breeze.</p>
-                    </div>
-                </div>
-
                 <div class="card">
                     <div class="card-img auto-slideshow-img" data-folder="images/rooms/living-room/living-room" data-total="4" data-ext="png"></div>
                     <div class="card-body">
                         <h3 data-i18n="room_living_title">Living Room</h3>
-                        <p data-i18n="room_living_desc">Bright, comfortable relaxation area with a Smart TV for your entertainment.</p>
+                        <p data-i18n="room_living_desc">Bright, comfortable relaxation area with a Smart TV.</p>
                     </div>
                 </div>
-
+                <div class="card">
+                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/kitchen/kitchen" data-total="4" data-ext="png"></div>
+                    <div class="card-body">
+                        <h3 data-i18n="room_kitchen_title">Kitchen</h3>
+                        <p data-i18n="room_kitchen_desc">Fully equipped kitchen with oven, refrigerator, toaster, and coffee maker.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/bathroom/bathroom" data-total="2" data-ext="png"></div>
+                    <div class="card-body">
+                        <h3 data-i18n="room_bathroom_title">Bathroom</h3>
+                        <p data-i18n="room_bathroom_desc">Modern bathroom equipped with a washing machine and essentials.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/balcony/balcony" data-total="6" data-ext="png"></div>
+                    <div class="card-body">
+                        <h3 data-i18n="room_balcony_title">Private Balcony</h3>
+                        <p data-i18n="room_balcony_desc">Private outdoor area to enjoy the sea breeze.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -135,7 +135,13 @@
                 <div class="amenity-item"><i class="fas fa-tv"></i><h3 data-i18n="am_tv">Smart TV</h3></div>
                 <div class="amenity-item"><i class="fas fa-wifi"></i><h3 data-i18n="am_wifi">Free Wi-Fi</h3></div>
                 <div class="amenity-item"><i class="fas fa-soap"></i><h3 data-i18n="am_washer">Washing Machine</h3></div>
+                <div class="amenity-item"><i class="fas fa-utensils"></i><h3 data-i18n="am_oven">Oven & Stoves</h3></div>
+                <div class="amenity-item"><i class="fas fa-ice-cream"></i><h3 data-i18n="am_fridge">Refrigerator</h3></div>
+                <div class="amenity-item"><i class="fas fa-bread-slice"></i><h3 data-i18n="am_toaster">Toaster</h3></div>
                 <div class="amenity-item"><i class="fas fa-car"></i><h3 data-i18n="am_parking">Free Parking</h3></div>
+                <div class="amenity-item"><i class="fas fa-fire-extinguisher"></i><h3 data-i18n="am_fire">Fire Extinguisher</h3></div>
+                <div class="amenity-item"><i class="fas fa-medkit"></i><h3 data-i18n="am_firstaid">First Aid Kit</h3></div>
+                <div class="amenity-item"><i class="fas fa-bed"></i><h3 data-i18n="am_pillows">Extra Pillows</h3></div>
             </div>
         </div>
     </section>
@@ -143,12 +149,14 @@
     <section id="gallery" class="section bg-light">
         <div class="container">
             <div class="section-header">
-                <h2 data-i18n="gallery_title">Photos</h2>
+                <h2 data-i18n="gallery_title">Gallery & Highlights</h2>
+                <p data-i18n="gallery_subtitle">Best photos of our property, the local beach, and nearby attractions like Kavala</p>
             </div>
             <div class="gallery-grid">
-                <img src="images/gallery/gallery-01.jpg" class="lightbox-trigger" alt="Interior">
-                <img src="images/location/outside.jpg" class="lightbox-trigger" alt="Exterior">
-                <img src="images/nearby/beach.jpg" class="lightbox-trigger" alt="Beach">
+                <img src="images/gallery/gallery-01.png" class="lightbox-trigger" alt="Best of Studio">
+                <img src="images/location/beach-access.png" class="lightbox-trigger" alt="Beach Access">
+                <img src="images/location/village.png" class="lightbox-trigger" alt="Nea Karvali Village">
+                <img src="images/nearby/kavala.png" class="lightbox-trigger" alt="Kavala City">
             </div>
         </div>
     </section>
