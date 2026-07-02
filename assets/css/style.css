@@ -195,3 +195,30 @@ footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px
         justify-content: center;
     }
 }
+/* Στυλ για τα βελάκια πλοήγησης στο Lightbox */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 15px;
+    user-select: none;
+    transition: color 0.2s ease;
+    z-index: 1001;
+}
+
+.lightbox-nav:hover {
+    color: var(--secondary, #ffb703);
+}
+
+.lightbox-nav.prev { left: 20px; }
+.lightbox-nav.next { right: 20px; }
+
+@media (max-width: 768px) {
+    .lightbox-nav { font-size: 30px; padding: 10px; }
+    .lightbox-nav.prev { left: 5px; }
+    .lightbox-nav.next { right: 5px; }
+}
