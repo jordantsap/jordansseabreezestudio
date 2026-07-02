@@ -254,4 +254,41 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.querySelector('i').classList.toggle('fa-times');
         });
     }
+
+    const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Σταματάει την ανανέωση της σελίδας!
+        
+        submitBtn.innerText = "Αποστολή...";
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: json
+        })
+        .then(async (response) => {
+            if (response.status == 200) {
+                // Επιτυχία!
+                submitBtn.innerText = "Το μήνυμα στάλθηκε επιτυχώς!";
+                submitBtn.style.backgroundColor = "#2a9d8f"; // Πράσινο χρώμα επιτυχίας
+                form.reset(); // Καθαρίζει τα πεδία
+            } else {
+                submitBtn.innerText = "Σφάλμα αποστολής";
+                submitBtn.disabled = false;
+            }
+        })
+        .catch(error => {
+            submitBtn.innerText = "Δίκτυο εκτός λειτουργίας";
+            submitBtn.disabled = false;
+        });
+    });
+}
 });
