@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jordan's Sea Breeze Studio | Πολυτελής Διαμονή</title>
-    <meta name="description" content="Απολαύστε τη διαμονή σας στο Jordan's Sea Breeze Studio. Χαλάρωση, άνεση και θέα στη θάλασσα. Κάντε την κράτησή σας σήμερα.">
+    <title>Jordan's Sea Breeze Studio</title>
     
-    <link rel="icon" type="image/png" href="favicon/favicon.png">
+    <meta name="description" content="Enjoy a premium stay next to the sea at Jordan's Sea Breeze Studio in Nea Karvali, Kavala.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jordan's Sea Breeze Studio | Premium Stay">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="manifest" href="manifest.json">
     
     <link rel="stylesheet" href="assets/css/style.css">
@@ -17,84 +20,107 @@
     <header class="navbar">
         <div class="container navbar-container">
             <a href="#" class="logo">Jordan's <span>Sea Breeze</span></a>
+            
             <nav class="nav-menu" id="navMenu">
-                <a href="#hero">Αρχική</a>
-                <a href="#rooms">Τα Δωμάτια</a>
-                <a href="#amenities">Παροχές</a>
-                <a href="#gallery">Φωτογραφίες</a>
-                <a href="#location">Τοποθεσία</a>
-                <a href="#contact" class="btn btn-primary nav-btn">Κράτηση Τώρα</a>
+                <a href="#hero" data-i18n="nav_home">Home</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#rooms" data-i18n="nav_rooms">Rooms</a>
+                <a href="#amenities" data-i18n="nav_amenities">Amenities</a>
+                <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+                <a href="#location" data-i18n="nav_location">Location</a>
+                <a href="#contact" class="btn btn-primary nav-btn" data-i18n="nav_book">Book Now</a>
+                
+                <div class="lang-switcher">
+                    <i class="fas fa-globe"></i>
+                    <select id="langSelect">
+                        <option value="en" selected>English</option>
+                        <option value="el">Ελληνικά</option>
+                        <option value="bg">Български</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </div>
             </nav>
+            
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <section id="hero" class="hero" style="background: linear-gradient(rgba(2, 48, 71, 0.5), rgba(2, 48, 71, 0.3)), url('images/hero/hero-01.jpg') no-repeat center center/cover;">
+    <section id="hero" class="hero auto-slideshow-bg" data-folder="images/hero/hero" data-total="5" data-ext="jpg">
         <div class="hero-content container">
-            <h1>Η Απόλυτη Απόδραση Δίπλα στο Κύμα</h1>
-            <p>Ζήστε την εμπειρία της άνεσης και της ηρεμίας στο Jordan's Sea Breeze Studio.</p>
-            <a href="#rooms" class="btn btn-primary btn-lg">Ανακαλύψτε τα Δωμάτια <i class="fas fa-arrow-right"></i></a>
+            <h1 data-i18n="hero_title">The Ultimate Escape by the Sea</h1>
+            <p data-i18n="hero_subtitle">Experience comfort and relaxation in Nea Karvali, Kavala.</p>
+            <div class="hero-buttons">
+                <a href="#rooms" class="btn btn-primary btn-lg" data-i18n="hero_btn_explore">Explore Rooms</a>
+                <a href="https://www.airbnb.com/rooms/1685512759616250569" target="_blank" class="btn btn-accent btn-lg"><i class="fab fa-airbnb"></i> Airbnb</a>
+            </div>
         </div>
     </section>
 
     <section class="booking-bar">
         <div class="container">
-            <form class="booking-form" onsubmit="event.preventDefault(); alert('Ανακατεύθυνση στο σύστημα κρατήσεων...');">
-                <div class="form-group">
-                    <label><i class="far fa-calendar-alt"></i> Άφιξη</label>
-                    <input type="date" required>
+            <div class="booking-channels">
+                <span class="booking-title" data-i18n="booking_title">Direct Booking via:</span>
+                <a href="https://www.airbnb.com/rooms/1685512759616250569" target="_blank" class="channel-link airbnb"><i class="fab fa-airbnb"></i> Airbnb</a>
+                <a href="https://www.booking.com/hotel/gr/jordans-holiday-apartment-nea-karbale.html" target="_blank" class="channel-link booking"><i class="fas fa-bold"></i> Booking.com</a>
+                <a href="#contact" class="channel-link direct" data-i18n="booking_direct"><i class="fas fa-envelope"></i> Message</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container grid grid-about">
+            <div class="about-text">
+                <h2 data-i18n="about_title">Welcome to Jordan's Sea Breeze Studio</h2>
+                <hr class="divider">
+                <p data-i18n="about_description">A fully equipped space designed to offer a warm, relaxing, and premium accommodation experience next to the sea.</p>
+                <div class="property-meta">
+                    <div class="meta-item"><i class="fas fa-clock"></i> <span data-i18n="meta_checkin"><strong>Check-in:</strong> Flexible (upon communication)</span></div>
+                    <div class="meta-item"><i class="fas fa-sign-out-alt"></i> <span data-i18n="meta_checkout"><strong>Check-out:</strong> Until 12:00 (Noon)</span></div>
+                    <div class="meta-item"><i class="fas fa-language"></i> <span data-i18n="meta_languages"><strong>Languages:</strong> English, Greek</span></div>
                 </div>
-                <div class="form-group">
-                    <label><i class="far fa-calendar-alt"></i> Αναχώρηση</label>
-                    <input type="date" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-users"></i> Επισκέπτες</label>
-                    <select>
-                        <option>1 Επισκέπτης</option>
-                        <option selected>2 Επισκέπτες</option>
-                        <option>3 Επισκέπτες</option>
-                        <option>4 Επισκέπτες</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-accent">Έλεγχος Διαθεσιμότητας</button>
-            </form>
+            </div>
+            <div class="about-image">
+                <img src="images/hero/hero-01.jpg" class="lightbox-trigger img-responsive" alt="Studio Exterior">
+            </div>
         </div>
     </section>
 
     <section id="rooms" class="section bg-light">
         <div class="container">
             <div class="section-header">
-                <h2>Τα Δωμάτιά μας</h2>
-                <p>Σχεδιασμένα με υψηλή αισθητική για την απόλυτη χαλάρωσή σας</p>
+                <h2 data-i18n="rooms_header_title">Our Spaces</h2>
+                <p data-i18n="rooms_header_subtitle">Discover every corner of the studio, designed for ultimate functionality</p>
             </div>
-            <div class="grid grid-rooms">
+            <div class="grid grid-3">
+                
                 <div class="card">
-                    <div class="card-img">
-                        <img src="images/rooms/balcony/balcony-01.png" class="lightbox-trigger" alt="Ιδιωτικό Μπαλκόνι">
-                    </div>
-                    <div class="card-body">
-                        <h3>Ιδιωτικό Μπαλκόνι</h3>
-                        <p>Απολαύστε τον πρωινό καφέ σας με τη δροσιά και τη θέα του Sea Breeze.</p>
-                        <div class="card-footer">
-                            <a href="#contact" class="btn btn-outline">Μάθετε Περισσότερα</a>
+                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/bedroom/bedroom" data-total="3" data-ext="png">
                         </div>
+                    <div class="card-body">
+                        <h3 data-i18n="room_bedroom_title">Master Bedroom</h3>
+                        <p data-i18n="room_bedroom_desc">Comfortable bed with extra pillows and premium linens for a restful sleep.</p>
                     </div>
                 </div>
+
                 <div class="card">
-                    <div class="card-img">
-                        <img src="images/rooms/bedroom/bedroom-01.png" class="lightbox-trigger" alt="Master Bedroom">
-                    </div>
-                    <div class="card-body">
-                        <h3>Master Bedroom</h3>
-                        <p>Αναπαυτικά στρώματα και premium λευκά είδη για την απόλυτη εμπειρία ύπνου.</p>
-                        <div class="card-footer">
-                            <a href="#contact" class="btn btn-outline">Μάθετε Περισσότερα</a>
+                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/balcony/balcony" data-total="2" data-ext="png">
                         </div>
+                    <div class="card-body">
+                        <h3 data-i18n="room_balcony_title">Private Balcony</h3>
+                        <p data-i18n="room_balcony_desc">Private outdoor area to enjoy your morning coffee with the sea breeze.</p>
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-img auto-slideshow-img" data-folder="images/rooms/living-room/living-room" data-total="2" data-ext="png"></div>
+                    <div class="card-body">
+                        <h3 data-i18n="room_living_title">Living Room</h3>
+                        <p data-i18n="room_living_desc">Bright, comfortable relaxation area with a Smart TV for your entertainment.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -102,26 +128,14 @@
     <section id="amenities" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Ανέσεις & Παροχές</h2>
-                <p>Όλα όσα χρειάζεστε για μια ξέγνοιαστη διαμονή</p>
+                <h2 data-i18n="amenities_title">Amenities & Comforts</h2>
             </div>
-            <div class="grid grid-amenities">
-                <div class="amenity-item">
-                    <i class="fas fa-snowflake"></i>
-                    <h3>Κλιματισμός (A/C)</h3>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-wifi"></i>
-                    <h3>Γρήγορο Ίντερνετ</h3>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-coffee"></i>
-                    <h3>Καφετιέρα & Espresso</h3>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-square-parking"></i>
-                    <h3>Δωρεάν Parking</h3>
-                </div>
+            <div class="grid grid-4">
+                <div class="amenity-item"><i class="fas fa-snowflake"></i><h3 data-i18n="am_ac">Air Conditioning</h3></div>
+                <div class="amenity-item"><i class="fas fa-tv"></i><h3 data-i18n="am_tv">Smart TV</h3></div>
+                <div class="amenity-item"><i class="fas fa-wifi"></i><h3 data-i18n="am_wifi">Free Wi-Fi</h3></div>
+                <div class="amenity-item"><i class="fas fa-soap"></i><h3 data-i18n="am_washer">Washing Machine</h3></div>
+                <div class="amenity-item"><i class="fas fa-car"></i><h3 data-i18n="am_parking">Free Parking</h3></div>
             </div>
         </div>
     </section>
@@ -129,58 +143,45 @@
     <section id="gallery" class="section bg-light">
         <div class="container">
             <div class="section-header">
-                <h2>Φωτογραφίες</h2>
-                <p>Μια ματιά στους χώρους του Jordan's Sea Breeze Studio</p>
+                <h2 data-i18n="gallery_title">Photos</h2>
             </div>
             <div class="gallery-grid">
-                <img src="images/gallery/gallery-01.jpg" class="lightbox-trigger" alt="Studio Interior">
-                <img src="images/location/outside.jpg" class="lightbox-trigger" alt="Εξωτερικός Χώρος">
-                <img src="images/nearby/beach.jpg" class="lightbox-trigger" alt="Κοντινή Παραλία">
-                <img src="images/under-construction.jpg" class="lightbox-trigger" alt="Sea Breeze Preview">
+                <img src="images/gallery/gallery-01.jpg" class="lightbox-trigger" alt="Interior">
+                <img src="images/location/outside.jpg" class="lightbox-trigger" alt="Exterior">
+                <img src="images/nearby/beach.jpg" class="lightbox-trigger" alt="Beach">
             </div>
         </div>
     </section>
 
-    <section id="location" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Τοποθεσία & Επικοινωνία</h2>
-                <p>Βρείτε μας εύκολα και επικοινωνήστε απευθείας μαζί μας</p>
+    <section id="contact" class="section">
+        <div class="container grid grid-2">
+            <div class="contact-info">
+                <h2 data-i18n="contact_title">Contact Us</h2>
+                <hr class="divider">
+                <div class="contact-details">
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+306932728683">+30 693 272 8683</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@jordansseabreezestudio.com">info@jordansseabreezestudio.com</a></p>
+                </div>
             </div>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Πού θα μας βρείτε</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Νέα Καρβάλη, Καβάλα, Ελλάδα</p>
-                    <p><i class="fas fa-envelope"></i> info@jordansseabreeze.com</p>
-                    <div class="map-container">
-                        <img src="images/location/outside.jpg" alt="Map Location" style="width:100%; border-radius: 8px; height: 250px; object-fit: cover;">
-                    </div>
-                </div>
-                <div id="contact" class="contact-form-container">
-                    <h3>Στείλτε μας Μήνυμα / Εκδήλωση Ενδιαφέροντος</h3>
-                    <form class="main-contact-form">
-                        <input type="text" placeholder="Ονοματεπώνυμο" required>
-                        <input type="email" placeholder="Email" required>
-                        <textarea placeholder="Το μήνυμά σας ή οι ημερομηνίες που σας ενδιαφέρουν..." rows="5" required></textarea>
-                        <button type="submit" class="btn btn-primary btn-block">Αποστολή Μηνύματος</button>
-                    </form>
-                </div>
+            <div class="contact-form-container">
+                <form class="main-contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+                    <input type="text" data-i18n-holder="form_name" placeholder="Full Name" required>
+                    <input type="email" data-i18n-holder="form_email" placeholder="Email Address" required>
+                    <textarea data-i18n-holder="form_msg" placeholder="Your message or preferred dates..." rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="form_btn">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
     <div id="lightboxModal" class="lightbox-modal">
         <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="Full Screen Preview">
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Fullscreen View">
     </div>
 
     <footer>
         <div class="container footer-content">
             <p>&copy; 2026 Jordan's Sea Breeze Studio. All rights reserved.</p>
-            <div class="socials">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
         </div>
     </footer>
 
