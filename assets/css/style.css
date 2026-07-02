@@ -243,7 +243,7 @@ footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px
 .floating-chat-container {
     position: fixed !important;
     top: 50% !important;     /* Τοποθέτηση στο 50% από την κορυφή της οθόνης */
-    right: 30px !important;  /* Αν θες να πάνε αριστερά, άλλαξέ το σε left: 30px !important; */
+    right: 10px !important;  /* Αν θες να πάνε αριστερά, άλλαξέ το σε left: 30px !important; */
     transform: translateY(-50%) !important; /* Μετακίνηση κατά το μισό του ύψους του για τέλεια κεντράρισμα */
     display: flex !important;
     flex-direction: column !important;
