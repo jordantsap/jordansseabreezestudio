@@ -1,1 +1,15 @@
-
+{
+  "short_name": "SeaBreeze",
+  "name": "Jordan's Sea Breeze Studio",
+  "icons": [
+    {
+      "src": "favicon/favicon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#023047",
+  "theme_color": "#023047",
+  "display": "standalone"
+}
