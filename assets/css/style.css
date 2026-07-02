@@ -239,14 +239,16 @@ footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px
    ========================================================================== */
 
 /* Το container που κρατάει και τα δύο κουμπιά */
+/* Το container που κρατάει και τα δύο κουμπιά */
 .floating-chat-container {
     position: fixed !important;
-    bottom: 30px !important; /* Απόσταση από το κάτω μέρος της οθόνης */
-    right: 30px !important;  /* Αν θες να πάνε ΑΡΙΣΤΕΡΑ, άλλαξέ το σε left: 30px !important; */
+    top: 50% !important;     /* Τοποθέτηση στο 50% από την κορυφή της οθόνης */
+    right: 30px !important;  /* Αν θες να πάνε αριστερά, άλλαξέ το σε left: 30px !important; */
+    transform: translateY(-50%) !important; /* Μετακίνηση κατά το μισό του ύψους του για τέλεια κεντράρισμα */
     display: flex !important;
     flex-direction: column !important;
     gap: 15px !important;
-    z-index: 99999 !important; /* Τεράστιο z-index για να είναι ΠΑΝΩ από footer, φωτογραφίες και Lightbox */
+    z-index: 99999 !important; /* Πάνω από όλο το περιεχόμενο */
 }
 
 /* Κοινό στυλ για τα δύο στρογγυλά κουμπιά */
