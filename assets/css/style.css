@@ -222,3 +222,58 @@ footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px
     .lightbox-nav.prev { left: 5px; }
     .lightbox-nav.next { right: 5px; }
 }
+
+/* Floating Chat Container */
+.floating-chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Αν θες να πάνε αριστερά, άλλαξέ το σε left: 20px; */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999; /* Για να είναι πάντα πάνω από φωτογραφίες και Lightbox */
+}
+
+/* Κοινό στυλ για τα κουμπιά */
+.chat-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    font-size: 28px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+/* Εφέ όταν περνάει το ποντίκι (Hover) */
+.chat-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Χρώμα WhatsApp */
+.whatsapp-btn {
+    background-color: #25D366;
+}
+
+/* Χρώμα Viber */
+.viber-btn {
+    background-color: #7360F2;
+}
+
+/* Προσαρμογή για μικρές οθόνες κινητών */
+@media (max-width: 480px) {
+    .floating-chat-container {
+        bottom: 15px;
+        right: 15px;
+    }
+    .chat-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+}
