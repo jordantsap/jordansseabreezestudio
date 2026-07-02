@@ -36,7 +36,7 @@ const translations = {
         room_bathroom_title: "Μπάνιο", room_bathroom_desc: "Σύγχρονο μπάνιο εξοπλισμένο με πλυντήριο ρούχων και είδη πρώτης ανάγκης.",
         amenities_title: "Παροχές & Ανέσεις", am_ac: "Κλιματισμός (A/C)", am_tv: "Smart TV", am_wifi: "Δωρεάν Wi-Fi", am_washer: "Πλυντήριο Ρούχων", am_oven: "Φούρνος & Εστίες", am_fridge: "Ψυγείο", am_toaster: "Τοστιέρα", am_parking: "Δωρεάν Parking", am_fire: "Πυροσβεστήρας", am_firstaid: "Κουτί Πρώτων Βοηθειών", am_pillows: "Extra Μαξιλάρια",
         gallery_title: "Φωτογραφίες & Αξιοθέατα", gallery_subtitle: "Οι καλύτερες φωτογραφίες του καταλύματος, της παραλίας και της κοντινής Καβάλας",
-        contact_title: "Επικοινωνία", form_name: "Ονοματεπώνυμο", form_email: "Email Διεύθυνση", form_msg: "Γράψτε το μήνυμά σας ή τις ημερομηνίες ενδιαφέροντος...", form_btn: "Αποστολή Μηνύματος"
+        contact_title: "Επικοινωνία", form_name: "Ονοματεπώνυμο", form_email: "Email Διεύθυνση", form_msg: "Γράψτε το μήνυμά σειράς ή τις ημερομηνίες ενδιαφέροντος...", form_btn: "Αποστολή Μηνύματος"
     }
 };
 
@@ -54,19 +54,21 @@ function setLanguage(lang) {
 }
 
 // ==========================================================================
-// 2. ΔΙΟΡΘΩΜΕΝΟΣ ΜΗΧΑΝΙΣΜΟΣ SLIDESHOWS
+// 2. ΕΞΥΠΝΟΣ ΜΗΧΑΝΙΣΜΟΣ SLIDESHOWS (Fix για Μικτές Καταλήξεις)
 // ==========================================================================
 function initDynamicSlideshows() {
-    // Background Slideshows (π.χ. Hero)
+    // Background Slideshow (Hero)
     document.querySelectorAll('.auto-slideshow-bg').forEach(section => {
         const folder = section.getAttribute('data-folder');
         const total = parseInt(section.getAttribute('data-total')) || 1;
-        const ext = section.getAttribute('data-ext') || 'png';
         let currentIndex = 1;
 
         function rotateBackground() {
             let imgNum = String(currentIndex).padStart(2, '0');
-            section.style.backgroundImage = `linear-gradient(rgba(2, 48, 71, 0.5), rgba(2, 48, 71, 0.3)), url('${folder}-${imgNum}.${ext}')`;
+            // Επειδή το hero-01 είναι png αλλά τα 02,03,04,05 είναι jpg:
+            let ext = (currentIndex === 1) ? 'png' : 'jpg';
+            
+            section.style.backgroundImage = `linear-gradient(rgba(2, 48, 71, 0.4), rgba(2, 48, 71, 0.2)), url('${folder}-${imgNum}.${ext}')`;
             currentIndex = (currentIndex % total) + 1;
         }
         
@@ -74,7 +76,7 @@ function initDynamicSlideshows() {
         if (total > 1) setInterval(rotateBackground, 5000);
     });
 
-    // Content Inline Slideshows (π.χ. Δωμάτια)
+    // Κανονικά Slideshows (Δωμάτια)
     document.querySelectorAll('.auto-slideshow-img').forEach(container => {
         const folder = container.getAttribute('data-folder');
         const total = parseInt(container.getAttribute('data-total')) || 1;
@@ -89,11 +91,13 @@ function initDynamicSlideshows() {
 
         function rotateImage() {
             let imgNum = String(currentIndex).padStart(2, '0');
-            imgElement.style.opacity = 0.3;
+            imgElement.style.opacity = 0.2;
+            
             setTimeout(() => {
                 imgElement.src = `${folder}-${imgNum}.${ext}`;
                 imgElement.style.opacity = 1;
             }, 250);
+            
             currentIndex = (currentIndex % total) + 1;
         }
 
@@ -103,7 +107,7 @@ function initDynamicSlideshows() {
 }
 
 // ==========================================================================
-// 3. EVENT LISTENERS & LIGHTBOX
+// 3. EVENT LISTENERS
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     const langSelect = document.getElementById('langSelect');
@@ -115,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(savedLang);
     initDynamicSlideshows();
 
-    // Hamburger Mobile Menu
+    // Mobile Menu
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     if (hamburger && navMenu) {
@@ -126,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lightbox Modal
+    // Lightbox
     const modal = document.getElementById('lightboxModal');
     const modalImg = document.getElementById('lightboxImg');
     const closeBtn = document.querySelector('.lightbox-close');
