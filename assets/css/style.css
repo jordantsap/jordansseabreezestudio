@@ -234,46 +234,61 @@ footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px
     z-index: 9999; /* Για να είναι πάντα πάνω από φωτογραφίες και Lightbox */
 }
 
-/* Κοινό στυλ για τα κουμπιά */
+/* ==========================================================================
+   FLOATING CHAT BUTTONS (WhatsApp & Viber Fixed Position)
+   ========================================================================== */
+
+/* Το container που κρατάει και τα δύο κουμπιά */
+.floating-chat-container {
+    position: fixed !important;
+    bottom: 30px !important; /* Απόσταση από το κάτω μέρος της οθόνης */
+    right: 30px !important;  /* Αν θες να πάνε ΑΡΙΣΤΕΡΑ, άλλαξέ το σε left: 30px !important; */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    z-index: 99999 !important; /* Τεράστιο z-index για να είναι ΠΑΝΩ από footer, φωτογραφίες και Lightbox */
+}
+
+/* Κοινό στυλ για τα δύο στρογγυλά κουμπιά */
 .chat-btn {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     color: #ffffff !important;
-    font-size: 28px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
+    font-size: 28px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    text-decoration: none !important;
 }
 
-/* Εφέ όταν περνάει το ποντίκι (Hover) */
+/* Εφέ όταν ο χρήστης ακουμπάει το ποντίκι (Hover) */
 .chat-btn:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1) translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Χρώμα WhatsApp */
+/* Χαρακτηριστικό πράσινο χρώμα του WhatsApp */
 .whatsapp-btn {
-    background-color: #25D366;
+    background-color: #25D366 !important;
 }
 
-/* Χρώμα Viber */
+/* Χαρακτηριστικό μοβ χρώμα του Viber */
 .viber-btn {
-    background-color: #7360F2;
+    background-color: #7360F2 !important;
 }
 
-/* Προσαρμογή για μικρές οθόνες κινητών */
+/* Σωστή προσαρμογή για οθόνες κινητών (Responsive) */
 @media (max-width: 480px) {
     .floating-chat-container {
-        bottom: 15px;
-        right: 15px;
+        bottom: 20px !important;
+        right: 20px !important; /* Ή left: 20px !important; αν επέλεξες αριστερά */
     }
     .chat-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 24px;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 24px !important;
     }
 }
