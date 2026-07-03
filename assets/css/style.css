@@ -297,7 +297,7 @@ footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px
 
 /* 1. Ενεργοποίηση Smooth Scroll για όλο το site */
 html {
-    scroll-behavior: smooth;
+    /*scroll-behavior: smooth;*/
 }
 
 /* Αν το μενού σου είναι σταθερό (fixed) στην κορυφή, προσθέτουμε ένα offset 
