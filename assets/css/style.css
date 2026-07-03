@@ -125,6 +125,44 @@ img.img-responsive { width: 100%; height: auto; border-radius: 12px; display: bl
 .contact-form-container { background: var(--light); padding: 40px; border-radius: 12px; }
 .main-contact-form input, .main-contact-form textarea { width: 100%; padding: 14px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; font-family: var(--font); font-size: 1rem; }
 .main-contact-form input:focus, .main-contact-form textarea:focus { border-color: var(--secondary); outline: none; }
+/* ==========================================================================
+   CONTACT FORM SUBMIT BUTTON STYLES
+   ========================================================================== */
+#submitBtn {
+    width: 100% !important; /* Πιάνει όλο το πλάτος της φόρμας όπως τα inputs */
+    padding: 14px 20px !important;
+    background-color: var(--primary, #023047) !important; /* Χρησιμοποιεί το κύριο σκούρο μπλε του site σου */
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important; /* Ίδια κλίση στις γωνίες με τα input fields */
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+    text-transform: uppercase !important; /* Κάνει τα γράμματα κεφαλαία για πιο clean/modern look */
+    letter-spacing: 1px !important;
+}
+
+/* Εφέ όταν ο χρήστης περνάει το ποντίκι από πάνω (Hover) */
+#submitBtn:hover {
+    background-color: var(--secondary, #ffb703) !important; /* Αλλάζει στο χαρακτηριστικό πορτοκαλί/κίτρινο στο hover */
+    color: #023047 !important; /* Σκούρα γράμματα για να κάνει αντίθεση με το κίτρινο */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Εφέ όταν το κουμπί είναι πατημένο (Active) */
+#submitBtn:active {
+    transform: scale(0.98) !important; /* Μικραίνει ανεπαίσθητα δίνοντας την αίσθηση αληθινού κλικ */
+}
+
+/* Όταν το κουμπί είναι απενεργοποιημένο κατά την αποστολή (Disabled) */
+#submitBtn:disabled {
+    background-color: #cccccc !important;
+    color: #666666 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
 
 /* --- LIGHTBOX MODAL --- */
 .lightbox-trigger { cursor: pointer; }
