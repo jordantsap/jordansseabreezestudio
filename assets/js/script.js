@@ -232,6 +232,56 @@ function initLightboxEngine() {
 // 4. ΕΚΚΙΝΗΣΗ DOM & ΦΟΡΜΑΣ ΕΠΙΚΟΙΝΩΝΙΑΣ
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
+    // --- ΚΩΔΙΚΑΣ ΓΙΑ ΠΙΟ ΑΡΓΟ & ΟΜΑΛΟ SCROLL (CUSTOM SMOOTH SCROLL) ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Κλείσιμο του κινητού μενού (αν είναι ανοιχτό)
+                const navMenu = document.getElementById('navMenu');
+                const hamburgerIcon = document.getElementById('hamburger')?.querySelector('i');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    if (hamburgerIcon) {
+                        hamburgerIcon.classList.add('fa-bars');
+                        hamburgerIcon.classList.remove('fa-times');
+                    }
+                }
+
+                // Υπολογισμός θέσης (με offset 80px για να μην κρύβεται ο τίτλος από το μενού)
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 80;
+                const startPosition = window.scrollY;
+                const distance = targetPosition - startPosition;
+                
+                // ΔΙΑΡΚΕΙΑ (σε χιλιοστά του δευτερολέπτου)
+                // 1200ms = 1.2 δευτερόλεπτα. Αν το θέλεις ΠΙΟ ΑΡΓΟ, μεγάλωσε αυτό το νούμερο (π.χ., 1600)
+                const duration = 1200; 
+                let start = null;
+
+                // Ήπια μαθηματική κίνηση (Ease-In-Out) για να ξεκινάει απαλά και να σταματάει απαλά
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                }
+
+                function easeInOutQuad(t, b, c, d) {
+                    t /= d / 2;
+                    if (t < 1) return c / 2 * t * t + b;
+                    t--;
+                    return -c / 2 * (t * (t - 2) - 1) + b;
+                }
+
+                requestAnimationFrame(animation);
+            }
+        });
+    });
     // Setup Γλώσσας
     const langSelect = document.getElementById('langSelect');
     const savedLang = localStorage.getItem('preferredLang') || 'en';
