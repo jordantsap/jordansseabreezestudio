@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- ΚΩΔΙΚΑΣ ΓΙΑ ΚΟΥΜΠΙ BACK TO TOP ---
+// --- ΚΩΔΙΚΑΣ ΓΙΑ ΚΟΥΜΠΙ BACK TO TOP (ΜΕ CUSTOM SMOOTH SCROLL) ---
     const backToTopBtn = document.getElementById('backToTop');
 
     if (backToTopBtn) {
@@ -388,7 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Υπολογισμός του μισού ύψους της σελίδας
             const halfPageHeight = document.documentElement.scrollHeight / 2;
             
-            // Αν το scroll ξεπεράσει το μισό ύψος, εμφάνισε το κουμπί, αλλιώς κρύψτο
             if (window.scrollY > halfPageHeight) {
                 backToTopBtn.classList.add('show');
             } else {
@@ -396,11 +395,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Λειτουργία όταν γίνει κλικ στο κουμπί
+        // Λειτουργία όταν γίνει κλικ (Χρήση του ίδιου αργού animation)
         backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Ομαλό scroll μέχρι πάνω
-            });
+            const startPosition = window.scrollY;
+            const distance = -startPosition; // Θέλουμε να πάμε στο 0, οπότε η απόσταση είναι αρνητική
+            const duration = 1200; // 1.2 δευτερόλεπτα (ίδια ταχύτητα με το μενού)
+            let start = null;
+
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            // Η μαθηματική συνάρτηση κίνησης για απαλό ξεκίνημα και σταμάτημα
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
         });
     }
