@@ -21,7 +21,19 @@ const translations = {
         room_bathroom_title: "Bathroom", room_bathroom_desc: "Modern bathroom equipped with a washing machine and essentials.",
         amenities_title: "Amenities & Comforts", am_ac: "Air Conditioning", am_tv: "Smart TV", am_wifi: "Free Wi-Fi", am_washer: "Washing Machine", am_oven: "Oven & Stoves", am_fridge: "Refrigerator", am_toaster: "Toaster", am_parking: "Free Parking", am_fire: "Fire Extinguisher", am_firstaid: "First Aid Kit", am_pillows: "Extra Pillows",
         gallery_title: "Gallery & Highlights", gallery_subtitle: "Best photos of our property, the local beach, and nearby attractions like Kavala",
-        contact_title: "Contact Us", form_name: "Full Name", form_email: "Email Address", form_msg: "Your message or preferred dates...", form_btn: "Send Message"
+        contact_title: "Contact Us", form_name: "Full Name", form_email: "Email Address", form_msg: "Your message or preferred dates...", form_btn: "Send Message",
+        "location_title": "Location",
+        "location_subtitle": "Nea Karvali, Kavala - Discover our area",
+        "location_address": "Nea Karvali, P.C. 64006, Kavala, Greece",
+        "location_beach_title": "Nea Karvali Beach",
+        "location_beach_desc": "Just a few steps from the studio, ideal for families, with organized beach bars and crystal-clear waters.",
+        "location_distances_title": "Nearby Distances",
+        "loc_dist_1": "Kavala City:",
+        "loc_time_1": "10-12 minutes by car",
+        "loc_dist_2": "Airport (KVA):",
+        "loc_time_2": "10 minutes",
+        "loc_dist_3": "Philippi Archaeological Site:",
+        "loc_time_3": "25 minutes"
     },
     el: {
         nav_home: "Αρχική", nav_about: "Το Κατάλυμα", nav_rooms: "Χώροι", nav_amenities: "Παροχές", nav_gallery: "Φωτογραφίες", nav_location: "Τοποθεσία", nav_book: "Κράτηση Τώρα",
@@ -37,7 +49,19 @@ const translations = {
         room_bathroom_title: "Μπάνιο", room_bathroom_desc: "Σύγχρονο μπάνιο εξοπλισμένο με πλυντήριο ρούχων και είδη πρώτης ανάγκης.",
         amenities_title: "Παροχές & Ανέσεις", am_ac: "Κλιματισμός (A/C)", am_tv: "Smart TV", am_wifi: "Δωρεάν Wi-Fi", am_washer: "Πλυντήριο Ρούχων", am_oven: "Φούρνος & Εστίες", am_fridge: "Ψυγείο", am_toaster: "Τοστιέρα", am_parking: "Δωρεάν Parking", am_fire: "Πυροσβεστήρας", am_firstaid: "Κουτί Πρώτων Βοηθειών", am_pillows: "Extra Μαξιλάρια",
         gallery_title: "Φωτογραφίες & Αξιοθέατα", gallery_subtitle: "Οι καλύτερες φωτογραφίες του καταλύματος, της παραλίας και της κοντινής Καβάλας",
-        contact_title: "Επικοινωνία", form_name: "Ονοματεπώνυμο", form_email: "Email Διεύθυνση", form_msg: "Γράψτε το μήνυμά σας ή τις ημερομηνίες ενδιαφέροντος...", form_btn: "Αποστολή Μηνύματος"
+        contact_title: "Επικοινωνία", form_name: "Ονοματεπώνυμο", form_email: "Email Διεύθυνση", form_msg: "Γράψτε το μήνυμά σας ή τις ημερομηνίες ενδιαφέροντος...", form_btn: "Αποστολή Μηνύματος",
+        "location_title": "Τοποθεσία",
+        "location_subtitle": "Νέα Καρβάλη, Καβάλα - Ανακαλύψτε την περιοχή μας",
+        "location_address": "Νέα Καρβάλη, Τ.Κ. 64006, Καβάλα, Ελλάδα",
+        "location_beach_title": "Παραλία Νέας Καρβάλης",
+        "location_beach_desc": "Μόλις λίγα βήματα από το studio, ιδανική για οικογένειες, με οργανωμένα beach bars και πεντακάθαρα νερά.",
+        "location_distances_title": "Κοντινές Αποστάσεις",
+        "loc_dist_1": "Πόλη Καβάλας:",
+        "loc_time_1": "10-12 λεπτά με το αυτοκίνητο",
+        "loc_dist_2": "Αεροδρόμιο (KVA):",
+        "loc_time_2": "10 λεπτά",
+        "loc_dist_3": "Αρχαιολογικός Χώρος Φιλίππων:",
+        "loc_time_3": "25 λεπτά"
     }
 };
 
